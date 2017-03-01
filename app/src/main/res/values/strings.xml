@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Ruskinn Workstation Selector</string>
+    <string name="dummy">dummy</string>
+    <string name="StorageType">Select the Type of Media Storage used:</string>
+    <string name="T75Flask">T75 Flask</string>
+    <string name="Well96">96 Well Plate</string>
+    <string name="Dish90mm">90mm Petri-Dish</string>
+    <string name="CapacityTextFlasks">Enter the number of T75 Flasks you would like to use in the workstation:</string>
+    <string name="CapacityTextWells">Enter the number of Well Plates you would like to use in the workstation</string>
+    <string name="CapacityTextPlates">Enter the number of 90mm Plates you would like to use in the workstation</string>
+    <string name="CapacityHint">Enter Number between 150 and 2000</string>
+    <string name="CapacityInterlock">Select the number of Plates you would need to pass through the interock in a single go:</string>
+    <string name="OperatingGas">Select the required operation conditions:</string>
+    <string name="Anaerobic">Anaerobic</string>
+    <string name="Physiological">Physiological</string>
+    <string name="Hyperoxic">Hyperoxic</string>
+    <string name="Submit">Submit</string>
+    <string name="IntBB">10</string>
+    <string name="IntBBplus">18</string>
+    <string name="IntNuvoSml">42</string>
+    <string name="IntNuvoLge">70</string>
+    <string name="IntNuvoDual">98</string>
+</resources>
