@@ -147,7 +147,7 @@
             android:id="@+id/WorkingCapacity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/CapacityHint"
+            android:hint="@string/CapacityHintFlasks"
             android:inputType="number"
             android:paddingLeft="@dimen/activity_vertical_margin"
             android:paddingRight="@dimen/activity_vertical_margin" /> <!-- Working Capacity Input -->
@@ -180,35 +180,35 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/IntBB" />
+                android:text="@string/IntBBFlask" />
 
             <RadioButton
                 android:id="@+id/IntSize2"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/IntBBplus" />
+                android:text="@string/IntBBplusFlask" />
 
             <RadioButton
                 android:id="@+id/IntSize3"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/IntNuvoSml" />
+                android:text="@string/IntNuvoSmlFlask" />
 
             <RadioButton
                 android:id="@+id/IntSize4"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/IntNuvoLge" />
+                android:text="@string/IntNuvoLgeFlask" />
 
             <RadioButton
                 android:id="@+id/IntSize5"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/IntNuvoDual" />
+                android:text="@string/IntNuvoDualFlask" />
 
         </RadioGroup>  <!-- Interlock Volume Group -->
 
