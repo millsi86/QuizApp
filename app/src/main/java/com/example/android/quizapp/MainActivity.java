@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     public void setT75(View view) {
         T75CapacityText(view);
         T75CapacityHint(view);
+        T75IntCapacityText(view);
         T75IntBB(view);
         T75IntBBPlus(view);
         T75IntNuvoSml(view);
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     public void set96w(View view) {
         WellCapacityText(view);
         WellCapacityHint(view);
+        WellIntCapacityText(view);
         WellIntBB(view);
         WellIntBBPlus(view);
         WellIntNuvoSml(view);
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     public void set90mm(View view) {
         PlateCapacityText(view);
         PlateCapacityHint(view);
+        PlateIntCapacityText(view);
         PlateIntBB(view);
         PlateIntBBPlus(view);
         PlateIntNuvoSml(view);
@@ -90,6 +93,21 @@ public class MainActivity extends AppCompatActivity {
     public void PlateCapacityHint (View view) {
         TextView Text = (TextView) findViewById(R.id.WorkingCapacity);
         Text.setHint(R.string.CapacityHintPlates);
+    }
+
+    public void T75IntCapacityText (View view){
+        TextView Text = (TextView) findViewById(R.id.InterlockCapacityText);
+        Text.setText(R.string.CapacityInterlockFlasks);
+    }
+
+    public void WellIntCapacityText (View view){
+        TextView Text = (TextView) findViewById(R.id.InterlockCapacityText);
+        Text.setText(R.string.CapacityInterlockWells);
+    }
+
+    public void PlateIntCapacityText (View view){
+        TextView Text = (TextView) findViewById(R.id.InterlockCapacityText);
+        Text.setText(R.string.CapacityInterlockPlates);
     }
 
     public void T75IntBB (View view){

@@ -5,22 +5,25 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingBottom="0dp"
     android:paddingLeft="0dp"
     android:paddingRight="0dp"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingTop="0dp"
     tools:context="com.example.android.quizapp.MainActivity">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="@dimen/Question_vertical_margin"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/editText0"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:focusableInTouchMode="true"
+            android:focusable="true"
             android:ems="10"
             android:hint="@string/dummy">
 
@@ -32,6 +35,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/activity_vertical_margin"
             android:paddingRight="@dimen/activity_vertical_margin"
+            android:textSize="@dimen/QuestionTextSize"
             android:text="@string/StorageType" /> <!-- Storage Type Selection -->
 
         <LinearLayout
@@ -84,8 +88,8 @@
             android:layout_marginTop="@dimen/Inter_Question_vertical_margin"
             android:gravity="center"
             android:orientation="horizontal"
-            android:paddingLeft="@dimen/activity_vertical_margin"
-            android:paddingRight="@dimen/activity_vertical_margin">
+            android:paddingLeft="@dimen/Question_vertical_margin"
+            android:paddingRight="@dimen/Question_vertical_margin">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -138,19 +142,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/Question_vertical_margin"
-            android:layout_marginTop="@dimen/Question_vertical_margin"
-            android:paddingLeft="@dimen/activity_vertical_margin"
-            android:paddingRight="@dimen/activity_vertical_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/Question_vertical_margin"
+            android:paddingRight="@dimen/Question_vertical_margin"
+            android:textSize="@dimen/QuestionTextSize"
             android:text="@string/CapacityTextFlasks" /> <!-- Working Capacity Text -->
 
         <EditText
             android:id="@+id/WorkingCapacity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorAccentLightest"
             android:hint="@string/CapacityHintFlasks"
             android:inputType="number"
-            android:paddingLeft="@dimen/activity_vertical_margin"
-            android:paddingRight="@dimen/activity_vertical_margin" /> <!-- Working Capacity Input -->
+            android:layout_marginLeft="@dimen/Question_vertical_margin"
+            android:layout_marginRight="@dimen/Question_vertical_margin"
+            android:textSize="@dimen/AnswerTextSie"/> <!-- Working Capacity Input -->
 
         <View
             android:layout_width="match_parent"
@@ -159,13 +166,14 @@
             android:background="@color/colorAccentLight" /> <!-- Line -->
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/InterlockCapacityText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/Question_vertical_margin"
-            android:paddingLeft="@dimen/activity_vertical_margin"
-            android:paddingRight="@dimen/activity_vertical_margin"
-            android:text="@string/CapacityInterlock" /> <!-- Interlock Volume Text-->
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/Question_vertical_margin"
+            android:paddingRight="@dimen/Question_vertical_margin"
+            android:textSize="@dimen/QuestionTextSize"
+            android:text="@string/CapacityInterlockFlasks" /> <!-- Interlock Volume Text-->
 
         <RadioGroup
             android:layout_width="match_parent"
@@ -180,35 +188,40 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/IntBBFlask" />
+                android:text="@string/IntBBFlask"
+                android:textSize="@dimen/AnswerTextSie"/>
 
             <RadioButton
                 android:id="@+id/IntSize2"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/IntBBplusFlask" />
+                android:text="@string/IntBBplusFlask"
+                android:textSize="@dimen/AnswerTextSie"/>
 
             <RadioButton
                 android:id="@+id/IntSize3"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/IntNuvoSmlFlask" />
+                android:text="@string/IntNuvoSmlFlask"
+                android:textSize="@dimen/AnswerTextSie"/>
 
             <RadioButton
                 android:id="@+id/IntSize4"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/IntNuvoLgeFlask" />
+                android:text="@string/IntNuvoLgeFlask"
+                android:textSize="@dimen/AnswerTextSie"/>
 
             <RadioButton
                 android:id="@+id/IntSize5"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/IntNuvoDualFlask" />
+                android:text="@string/IntNuvoDualFlask"
+                android:textSize="@dimen/AnswerTextSie"/>
 
         </RadioGroup>  <!-- Interlock Volume Group -->
 
@@ -221,38 +234,43 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/Question_vertical_margin"
-            android:paddingLeft="@dimen/activity_vertical_margin"
-            android:paddingRight="@dimen/activity_vertical_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/Question_vertical_margin"
+            android:paddingRight="@dimen/Question_vertical_margin"
+            android:textSize="@dimen/QuestionTextSize"
             android:text="@string/OperatingGas" /> <!-- Operating Gas Text -->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/Inter_Question_vertical_margin"
-            android:paddingLeft="@dimen/activity_vertical_margin"
-            android:paddingRight="@dimen/activity_vertical_margin">
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/Question_vertical_margin"
+            android:paddingRight="@dimen/Question_vertical_margin">
 
             <CheckBox
                 android:id="@+id/Check_Anaerobic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/Anaerobic" />
+                android:text="@string/Anaerobic"
+                android:textSize="@dimen/AnswerTextSie"/>
 
             <CheckBox
                 android:id="@+id/Check_Hypoxic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/Physiological" />
+                android:text="@string/Physiological"
+                android:textSize="@dimen/AnswerTextSie"/>
 
             <CheckBox
                 android:id="@+id/Check_Hyperoxic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/Hyperoxic" />
+                android:text="@string/Hyperoxic"
+                android:textSize="@dimen/AnswerTextSie"/>
 
         </LinearLayout> <!-- Operating Gas CheckBoxes -->
 
@@ -260,6 +278,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/Question_vertical_margin"
+            android:paddingBottom="@dimen/Question_vertical_margin"
             android:text="@string/Submit" /> <!-- Submit Button -->
 
     </LinearLayout>
