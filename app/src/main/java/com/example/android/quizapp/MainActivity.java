@@ -14,6 +14,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    public void submit (View view){
+
+
+
+
+    }
+
+
+
+
+
+    // Declarations to get radio buttons changing when the corresponting image is selected:
+
     public void t75ImageClick(View view) {
         RadioButton radioT75 = (RadioButton) findViewById(R.id.Radio_T75);
         radioT75.setChecked(true);
@@ -31,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         radio90mm.setChecked(true);
         set90mm(view);
     }
+
+    // Declarations to get text changing with the Media Type radio Buttons:
 
     public void setT75(View view) {
         T75CapacityText(view);

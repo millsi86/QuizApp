@@ -1,286 +1,321 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:http="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backgroundrotated"
     android:paddingBottom="0dp"
     android:paddingLeft="0dp"
     android:paddingRight="0dp"
     android:paddingTop="0dp"
+    android:orientation="vertical"
     tools:context="com.example.android.quizapp.MainActivity">
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/Question_vertical_margin"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/editText0"
+        android:background="@android:color/white"
+        android:layout_margin="@dimen/HeaderMargin"
+        android:orientation="horizontal">
+        <ImageView
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:focusableInTouchMode="true"
-            android:focusable="true"
-            android:ems="10"
-            android:hint="@string/dummy">
-
-            <requestFocus />
-        </TextView> <!-- dummy view to stop EditText getting focus on launch -->
-
+            android:layout_height="36dp"
+            android:paddingTop="@dimen/ImageMargin"
+            android:paddingBottom="@dimen/ImageMargin"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            android:layout_gravity="center"
+            android:src="@drawable/bakerruskinn1"
+            android:background="@android:color/white"/>
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/activity_vertical_margin"
-            android:paddingRight="@dimen/activity_vertical_margin"
-            android:textSize="@dimen/QuestionTextSize"
-            android:text="@string/StorageType" /> <!-- Storage Type Selection -->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/Image_T75"
-                android:layout_width="72sp"
-                android:layout_height="72sp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:contentDescription="@string/T75Flask"
-                android:onClick="t75ImageClick"
-                android:scaleType="fitCenter"
-                android:src="@drawable/t75_flask" />
-
-            <ImageView
-                android:id="@+id/Well96_Button"
-                android:layout_width="72sp"
-                android:layout_height="72sp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:contentDescription="@string/Well96"
-                android:onClick="well96ImageClick"
-                android:scaleType="fitCenter"
-                android:src="@drawable/well_96" />
-
-            <ImageView
-                android:id="@+id/Plate_Button"
-                android:layout_width="72sp"
-                android:layout_height="72sp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:contentDescription="@string/Dish90mm"
-                android:onClick="plate90mmImageClick"
-                android:scaleType="fitCenter"
-                android:src="@drawable/plate_90mm" />
-
-        </LinearLayout> <!-- Media Storage Group Images-->
-
-        <RadioGroup
-            android:id="@+id/radioGroup1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/Inter_Question_vertical_margin"
+            android:layout_weight="1"
+            android:layout_gravity="center"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingLeft="@dimen/Question_vertical_margin"
-            android:paddingRight="@dimen/Question_vertical_margin">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight=".8" />
-
-            <RadioButton
-                android:id="@+id/Radio_T75"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:checked="true"
-                android:onClick="setT75"/> <!-- T75 -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <RadioButton
-                android:id="@+id/Radio_96well"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:checked="false"
-                android:onClick="set96w"/> <!-- 96 Well -->
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <RadioButton
-                android:id="@+id/Radio_90mm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight=".8"
-                android:checked="false"
-                android:onClick="set90mm"/> <!-- 90mm -->
-
-        </RadioGroup> <!-- Media Storage Group Radio Buttons-->
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:background="@color/colorAccentLight" /> <!-- Line -->
-
-        <TextView
-            android:id="@+id/WorkingCapacityText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/Question_vertical_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:paddingLeft="@dimen/Question_vertical_margin"
-            android:paddingRight="@dimen/Question_vertical_margin"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
             android:textSize="@dimen/QuestionTextSize"
-            android:text="@string/CapacityTextFlasks" /> <!-- Working Capacity Text -->
-
-        <EditText
-            android:id="@+id/WorkingCapacity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorAccentLightest"
-            android:hint="@string/CapacityHintFlasks"
-            android:inputType="number"
-            android:layout_marginLeft="@dimen/Question_vertical_margin"
-            android:layout_marginRight="@dimen/Question_vertical_margin"
-            android:textSize="@dimen/AnswerTextSie"/> <!-- Working Capacity Input -->
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:background="@color/colorAccentLight" /> <!-- Line -->
-
-        <TextView
-            android:id="@+id/InterlockCapacityText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:paddingLeft="@dimen/Question_vertical_margin"
-            android:paddingRight="@dimen/Question_vertical_margin"
-            android:textSize="@dimen/QuestionTextSize"
-            android:text="@string/CapacityInterlockFlasks" /> <!-- Interlock Volume Text-->
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/Inter_Question_vertical_margin"
-            android:orientation="horizontal"
-            android:paddingLeft="@dimen/activity_vertical_margin"
-            android:paddingRight="@dimen/activity_vertical_margin">
-
-            <RadioButton
-                android:id="@+id/IntSize1"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/IntBBFlask"
-                android:textSize="@dimen/AnswerTextSie"/>
-
-            <RadioButton
-                android:id="@+id/IntSize2"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/IntBBplusFlask"
-                android:textSize="@dimen/AnswerTextSie"/>
-
-            <RadioButton
-                android:id="@+id/IntSize3"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/IntNuvoSmlFlask"
-                android:textSize="@dimen/AnswerTextSie"/>
-
-            <RadioButton
-                android:id="@+id/IntSize4"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/IntNuvoLgeFlask"
-                android:textSize="@dimen/AnswerTextSie"/>
-
-            <RadioButton
-                android:id="@+id/IntSize5"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/IntNuvoDualFlask"
-                android:textSize="@dimen/AnswerTextSie"/>
-
-        </RadioGroup>  <!-- Interlock Volume Group -->
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:background="@color/colorAccentLight" /> <!-- Line -->
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:paddingLeft="@dimen/Question_vertical_margin"
-            android:paddingRight="@dimen/Question_vertical_margin"
-            android:textSize="@dimen/QuestionTextSize"
-            android:text="@string/OperatingGas" /> <!-- Operating Gas Text -->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/Inter_Question_vertical_margin"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/Question_vertical_margin"
-            android:paddingRight="@dimen/Question_vertical_margin">
-
-            <CheckBox
-                android:id="@+id/Check_Anaerobic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/Anaerobic"
-                android:textSize="@dimen/AnswerTextSie"/>
-
-            <CheckBox
-                android:id="@+id/Check_Hypoxic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/Physiological"
-                android:textSize="@dimen/AnswerTextSie"/>
-
-            <CheckBox
-                android:id="@+id/Check_Hyperoxic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/Hyperoxic"
-                android:textSize="@dimen/AnswerTextSie"/>
-
-        </LinearLayout> <!-- Operating Gas CheckBoxes -->
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/Question_vertical_margin"
-            android:paddingBottom="@dimen/Question_vertical_margin"
-            android:text="@string/Submit" /> <!-- Submit Button -->
+            android:text="Workstation Selector"/>
 
     </LinearLayout>
 
-</ScrollView>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/Question_vertical_margin">
+
+            <TextView
+                android:id="@+id/editText0"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:ems="10"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:hint="@string/dummy">
+
+                <requestFocus />
+            </TextView> <!-- dummy view to stop EditText getting focus on launch -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/activity_vertical_margin"
+                android:paddingRight="@dimen/activity_vertical_margin"
+                android:text="@string/StorageType"
+                android:textSize="@dimen/QuestionTextSize" /> <!-- Storage Type Selection -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/Image_T75"
+                    android:layout_width="72sp"
+                    android:layout_height="72sp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:contentDescription="@string/T75Flask"
+                    android:onClick="t75ImageClick"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/t75_flask" />
+
+                <ImageView
+                    android:id="@+id/Well96_Button"
+                    android:layout_width="72sp"
+                    android:layout_height="72sp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:contentDescription="@string/Well96"
+                    android:onClick="well96ImageClick"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/well_96" />
+
+                <ImageView
+                    android:id="@+id/Plate_Button"
+                    android:layout_width="72sp"
+                    android:layout_height="72sp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:contentDescription="@string/Dish90mm"
+                    android:onClick="plate90mmImageClick"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/plate_90mm" />
+
+            </LinearLayout> <!-- Media Storage Group Images-->
+
+            <RadioGroup
+                android:id="@+id/radioGroup1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/Inter_Question_vertical_margin"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/Question_vertical_margin"
+                android:paddingRight="@dimen/Question_vertical_margin">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".8" />
+
+                <RadioButton
+                    android:id="@+id/Radio_T75"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:onClick="setT75" /> <!-- T75 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <RadioButton
+                    android:id="@+id/Radio_96well"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="false"
+                    android:onClick="set96w" /> <!-- 96 Well -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <RadioButton
+                    android:id="@+id/Radio_90mm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".8"
+                    android:checked="false"
+                    android:onClick="set90mm" /> <!-- 90mm -->
+
+            </RadioGroup> <!-- Media Storage Group Radio Buttons-->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:background="@color/colorAccentLight" /> <!-- Line -->
+
+            <TextView
+                android:id="@+id/WorkingCapacityText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/Question_vertical_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/Question_vertical_margin"
+                android:paddingRight="@dimen/Question_vertical_margin"
+                android:text="@string/CapacityTextFlasks"
+                android:textSize="@dimen/QuestionTextSize" /> <!-- Working Capacity Text -->
+
+            <EditText
+                android:id="@+id/WorkingCapacity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/Question_vertical_margin"
+                android:layout_marginRight="@dimen/Question_vertical_margin"
+                android:backgroundTint="@color/colorAccentLightest"
+                android:hint="@string/CapacityHintFlasks"
+                android:inputType="number"
+                android:textSize="@dimen/AnswerTextSie" /> <!-- Working Capacity Input -->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:background="@color/colorAccentLight" /> <!-- Line -->
+
+            <TextView
+                android:id="@+id/InterlockCapacityText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/Question_vertical_margin"
+                android:paddingRight="@dimen/Question_vertical_margin"
+                android:text="@string/CapacityInterlockFlasks"
+                android:textSize="@dimen/QuestionTextSize" /> <!-- Interlock Volume Text-->
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/Inter_Question_vertical_margin"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/activity_vertical_margin"
+                android:paddingRight="@dimen/activity_vertical_margin">
+
+                <RadioButton
+                    android:id="@+id/IntSize1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/IntBBFlask"
+                    android:textSize="@dimen/AnswerTextSie" />
+
+                <RadioButton
+                    android:id="@+id/IntSize2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/IntBBplusFlask"
+                    android:textSize="@dimen/AnswerTextSie" />
+
+                <RadioButton
+                    android:id="@+id/IntSize3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/IntNuvoSmlFlask"
+                    android:textSize="@dimen/AnswerTextSie" />
+
+                <RadioButton
+                    android:id="@+id/IntSize4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/IntNuvoLgeFlask"
+                    android:textSize="@dimen/AnswerTextSie" />
+
+                <RadioButton
+                    android:id="@+id/IntSize5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/IntNuvoDualFlask"
+                    android:textSize="@dimen/AnswerTextSie" />
+
+            </RadioGroup>  <!-- Interlock Volume Group -->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:background="@color/colorAccentLight" /> <!-- Line -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/Question_vertical_margin"
+                android:paddingRight="@dimen/Question_vertical_margin"
+                android:text="@string/OperatingGas"
+                android:textSize="@dimen/QuestionTextSize" /> <!-- Operating Gas Text -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/Inter_Question_vertical_margin"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/Question_vertical_margin"
+                android:paddingRight="@dimen/Question_vertical_margin">
+
+                <CheckBox
+                    android:id="@+id/Check_Anaerobic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Anaerobic"
+                    android:textSize="@dimen/AnswerTextSie" />
+
+                <CheckBox
+                    android:id="@+id/Check_Hypoxic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Physiological"
+                    android:textSize="@dimen/AnswerTextSie" />
+
+                <CheckBox
+                    android:id="@+id/Check_Hyperoxic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Hyperoxic"
+                    android:textSize="@dimen/AnswerTextSie" />
+
+            </LinearLayout> <!-- Operating Gas CheckBoxes -->
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/Question_vertical_margin"
+                android:paddingBottom="@dimen/Question_vertical_margin"
+                android:text="@string/Submit" /> <!-- Submit Button -->
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

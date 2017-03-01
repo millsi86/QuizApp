@@ -6,4 +6,6 @@
     <dimen name="Inter_Question_vertical_margin">8dp</dimen>
     <dimen name="QuestionTextSize">20sp</dimen>
     <dimen name="AnswerTextSie">16sp</dimen>
+    <dimen name="HeaderMargin">8dp</dimen>
+    <dimen name="ImageMargin">4dp</dimen>
 </resources>
