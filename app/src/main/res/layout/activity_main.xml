@@ -28,7 +28,8 @@
             android:scaleType="centerInside"
             android:layout_gravity="center"
             android:src="@drawable/bakerruskinn1"
-            android:background="@android:color/white"/>
+            android:background="@android:color/white"
+            android:contentDescription="@string/Logo" />
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -38,7 +39,7 @@
             android:textColor="@color/colorPrimary"
             android:textStyle="bold"
             android:textSize="@dimen/QuestionTextSize"
-            android:text="Workstation Selector"/>
+            android:text="@string/Title"/>
 
     </LinearLayout>
 
@@ -309,6 +310,8 @@
             </LinearLayout> <!-- Operating Gas CheckBoxes -->
 
             <Button
+                android:id="@+id/submit"
+                android:onClick="submit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/Question_vertical_margin"

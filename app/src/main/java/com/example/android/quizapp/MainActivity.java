@@ -4,18 +4,46 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import static com.example.android.quizapp.R.id.Radio_T75;
+import static com.example.android.quizapp.R.id.radioGroup1;
+
 
 public class MainActivity extends AppCompatActivity {
+
+    private RadioGroup Group1;
+    private RadioButton Flask, Well, Plate;
+    private String CapacityType;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Group1 = (RadioGroup) findViewById(radioGroup1);
     }
 
     public void submit (View view){
+        Flask = (RadioButton) findViewById(Radio_T75);
+        Well = (RadioButton) findViewById(R.id.Radio_96well);
+        Plate = (RadioButton) findViewById(R.id.Radio_90mm);
 
+        int selectedId = Group1.getCheckedRadioButtonId();
+
+        if(selectedId == Flask.getId()){
+            CapacityType = "Flask";
+        }
+        else if(selectedId == Well.getId()){
+            CapacityType = "Well";
+        }
+        else {
+            CapacityType = "Plate";
+        }
+
+        Toast.makeText(this, CapacityType, Toast.LENGTH_SHORT).show();
 
 
 
@@ -28,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     // Declarations to get radio buttons changing when the corresponting image is selected:
 
     public void t75ImageClick(View view) {
-        RadioButton radioT75 = (RadioButton) findViewById(R.id.Radio_T75);
+        RadioButton radioT75 = (RadioButton) findViewById(Radio_T75);
         radioT75.setChecked(true);
         setT75(view);
     }

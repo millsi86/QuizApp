@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Ruskinn Workstation Selector</string>
     <string name="dummy">dummy</string>
+    <string name="Logo">Ruskinn Logo</string>
+    <string name="Title">Workstation Selector</string>
     <string name="StorageType">Select the Type of Media Storage used:</string>
     <string name="T75Flask">T75 Flask</string>
     <string name="Well96">96 Well Plate</string>
