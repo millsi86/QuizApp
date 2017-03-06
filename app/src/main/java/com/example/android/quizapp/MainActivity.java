@@ -3,12 +3,15 @@ package com.example.android.quizapp;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import static com.example.android.quizapp.R.id.Radio_T75;
+import static com.example.android.quizapp.R.id.WorkingCapacity;
+import static com.example.android.quizapp.R.id.WorkingCapacityText;
 import static com.example.android.quizapp.R.id.radioGroup1;
 
 
@@ -16,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RadioGroup Group1;
     private RadioButton Flask, Well, Plate;
-    private String CapacityType;
+
 
 
     @Override
@@ -27,6 +30,69 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void submit (View view){
+        String CapType = getRadio1ID(view);
+        EditText CapacityId = (EditText) findViewById(WorkingCapacity);
+        Integer Volume = Integer.parseInt(CapacityId.getText().toString());
+        Integer WorkstationSize;
+
+        if(CapType == "Flask"){
+            WorkstationSize = FlaskWorkstationSize(Volume);
+        }
+
+        else if(CapType == "Well"){
+            WorkstationSize = WellWorkstationSize(Volume);
+        }
+
+        else {WorkstationSize = DishWorkstationSize(Volume);}
+
+    }
+
+    private Integer FlaskWorkstationSize(Integer MainVolume){
+        Integer Volume1 = 77;
+        Integer Volume2 = 115;
+        Integer Volume3 = 292;
+        Integer Volume4 = 310;
+        // Integer Volume5 = 565;  --> Size of SCi-tive Dual
+        Integer workstationSize;
+
+        return workstationSize = WorkstationVolumeCalc(MainVolume, Volume1, Volume2, Volume3, Volume4);
+    }
+
+    private Integer WellWorkstationSize(Integer MainVolume){
+        Integer Volume1 = 199;
+        Integer Volume2 = 399;
+        Integer Volume3 = 753;
+        Integer Volume4 = 798;
+        // Integer Volume5 = 1507;  --> Size of SCi-tive Dual
+        Integer workstationSize;
+
+        return workstationSize = WorkstationVolumeCalc(MainVolume, Volume1, Volume2, Volume3, Volume4);
+    }
+
+    private Integer DishWorkstationSize(Integer MainVolume){
+        Integer Volume1 = 180;
+        Integer Volume2 = 360;
+        Integer Volume3 = 680;
+        Integer Volume4 = 720;
+        // Integer Volume5 = 1360;  --> Size of SCi-tive Dual
+        Integer workstationSize;
+
+        return workstationSize = WorkstationVolumeCalc(MainVolume, Volume1, Volume2, Volume3, Volume4);
+    }
+
+    private Integer WorkstationVolumeCalc(Integer Volume, Integer Size1, Integer Size2, Integer Size3, Integer Size4){
+        Integer workstationSize;
+        if(Volume <= Size1){ workstationSize = 1; }
+        else if(Volume <= Size2){ workstationSize = 2; }
+        else if(Volume <= Size3){ workstationSize = 3; }
+        else if(Volume <= Size4){ workstationSize = 4; }
+        else{workstationSize = 5;}
+        Toast.makeText(this, workstationSize.toString(), Toast.LENGTH_SHORT).show();
+        return workstationSize;
+    }
+
+    private String getRadio1ID (View view){
+        String CapacityType;
         Flask = (RadioButton) findViewById(Radio_T75);
         Well = (RadioButton) findViewById(R.id.Radio_96well);
         Plate = (RadioButton) findViewById(R.id.Radio_90mm);
@@ -43,14 +109,10 @@ public class MainActivity extends AppCompatActivity {
             CapacityType = "Plate";
         }
 
-        Toast.makeText(this, CapacityType, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, CapacityType, Toast.LENGTH_SHORT).show();  /Line used for testing Group1 Radio Button section
 
-
-
+        return CapacityType;
     }
-
-
-
 
 
     // Declarations to get radio buttons changing when the corresponting image is selected:
@@ -84,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
         T75IntNuvoSml(view);
         T75IntNuvoLrg(view);
         T75IntNuvoDual(view);
+        T75IntSci(view);
     }
 
     public void set96w(View view) {
@@ -95,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
         WellIntNuvoSml(view);
         WellIntNuvoLge(view);
         WellIntNuvoDual(view);
+        WellIntSci(view);
     }
 
     public void set90mm(View view) {
@@ -106,35 +170,36 @@ public class MainActivity extends AppCompatActivity {
         PlateIntNuvoSml(view);
         PlateIntNuvoLge(view);
         PlateIntNuvoDual(view);
+        PlateIntSci(view);
     }
 
     public void T75CapacityText (View view){
-        TextView Text = (TextView) findViewById(R.id.WorkingCapacityText);
+        TextView Text = (TextView) findViewById(WorkingCapacityText);
         Text.setText(R.string.CapacityTextFlasks);
     }
 
     public void WellCapacityText (View view){
-        TextView Text = (TextView) findViewById(R.id.WorkingCapacityText);
+        TextView Text = (TextView) findViewById(WorkingCapacityText);
         Text.setText(R.string.CapacityTextWells);
     }
 
     public void PlateCapacityText (View view){
-        TextView Text = (TextView) findViewById(R.id.WorkingCapacityText);
+        TextView Text = (TextView) findViewById(WorkingCapacityText);
         Text.setText(R.string.CapacityTextPlates);
     }
 
     public void T75CapacityHint (View view) {
-        TextView Text = (TextView) findViewById(R.id.WorkingCapacity);
+        TextView Text = (TextView) findViewById(WorkingCapacity);
         Text.setHint(R.string.CapacityHintFlasks);
     }
 
     public void WellCapacityHint (View view) {
-        TextView Text = (TextView) findViewById(R.id.WorkingCapacity);
+        TextView Text = (TextView) findViewById(WorkingCapacity);
         Text.setHint(R.string.CapacityHintWells);
     }
 
     public void PlateCapacityHint (View view) {
-        TextView Text = (TextView) findViewById(R.id.WorkingCapacity);
+        TextView Text = (TextView) findViewById(WorkingCapacity);
         Text.setHint(R.string.CapacityHintPlates);
     }
 
@@ -178,6 +243,11 @@ public class MainActivity extends AppCompatActivity {
         Text.setText(R.string.IntNuvoDualFlask);
     }
 
+    public void T75IntSci (View view){
+        TextView Text = (TextView) findViewById(R.id.IntSize6);
+        Text.setText(R.string.IntSciFlask);
+    }
+
     public void WellIntBB (View view){
         TextView Text = (TextView) findViewById(R.id.IntSize1);
         Text.setText(R.string.IntBBWell);
@@ -201,6 +271,11 @@ public class MainActivity extends AppCompatActivity {
     public void WellIntNuvoDual (View view){
         TextView Text = (TextView) findViewById(R.id.IntSize5);
         Text.setText(R.string.IntNuvoDualWell);
+    }
+
+    public void WellIntSci (View view){
+        TextView Text = (TextView) findViewById(R.id.IntSize6);
+        Text.setText(R.string.IntSciWell);
     }
 
     public void PlateIntBB (View view){
@@ -228,5 +303,9 @@ public class MainActivity extends AppCompatActivity {
         Text.setText(R.string.IntNuvoDualPlate);
     }
 
+    public void PlateIntSci (View view){
+        TextView Text = (TextView) findViewById(R.id.IntSize6);
+        Text.setText(R.string.IntSciPlate);
+    }
 }
 

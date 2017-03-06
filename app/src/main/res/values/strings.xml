@@ -21,19 +21,22 @@
     <string name="Physiological">Physiological</string>
     <string name="Hyperoxic">Hyperoxic</string>
     <string name="Submit">Submit</string>
-    <string name="IntBBFlask">9</string>
-    <string name="IntBBplusFlask">16</string>
+    <string name="IntBBFlask">6</string>
+    <string name="IntBBplusFlask">11</string>
     <string name="IntNuvoSmlFlask">21</string>
     <string name="IntNuvoLgeFlask">28</string>
     <string name="IntNuvoDualFlask">42</string>
+    <string name="IntSciFlask">50</string>
     <string name="IntBBWell">14</string>
     <string name="IntBBplusWell">26</string>
     <string name="IntNuvoSmlWell">42</string>
     <string name="IntNuvoLgeWell">70</string>
     <string name="IntNuvoDualWell">98</string>
+    <string name="IntSciWell">116</string>
     <string name="IntBBPlate">10</string>
     <string name="IntBBplusPlate">18</string>
     <string name="IntNuvoSmlPlate">30</string>
     <string name="IntNuvoLgePlate">36</string>
     <string name="IntNuvoDualPlate">72</string>
+    <string name="IntSciPlate">78</string>
 </resources>

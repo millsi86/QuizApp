@@ -215,8 +215,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/Inter_Question_vertical_margin"
                 android:orientation="horizontal"
-                android:paddingLeft="@dimen/activity_vertical_margin"
-                android:paddingRight="@dimen/activity_vertical_margin">
+                android:paddingLeft="@dimen/Question_vertical_margin"
+                android:paddingRight="@dimen/Question_vertical_margin">
 
                 <RadioButton
                     android:id="@+id/IntSize1"
@@ -257,6 +257,13 @@
                     android:layout_weight="1"
                     android:text="@string/IntNuvoDualFlask"
                     android:textSize="@dimen/AnswerTextSie" />
+
+                <RadioButton
+                    android:id="@+id/IntSize6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/IntSciFlask" />
 
             </RadioGroup>  <!-- Interlock Volume Group -->
 
@@ -311,10 +318,10 @@
 
             <Button
                 android:id="@+id/submit"
-                android:onClick="submit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/Question_vertical_margin"
+                android:onClick="submit"
                 android:paddingBottom="@dimen/Question_vertical_margin"
                 android:text="@string/Submit" /> <!-- Submit Button -->
 
