@@ -211,6 +211,7 @@
                 android:textSize="@dimen/QuestionTextSize" /> <!-- Interlock Volume Text-->
 
             <RadioGroup
+                android:id="@+id/radioGroup2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/Inter_Question_vertical_margin"
