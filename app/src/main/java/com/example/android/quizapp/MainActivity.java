@@ -4,12 +4,14 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import static com.example.android.quizapp.R.id.Check_Anaerobic;
 import static com.example.android.quizapp.R.id.Check_Hyperoxic;
@@ -42,6 +44,13 @@ public class MainActivity extends AppCompatActivity {
     public void submit (View view){
         String CapType = getRadio1ID();
         EditText CapacityId = (EditText) findViewById(WorkingCapacity);
+        boolean sCapacityId = TextUtils.isEmpty(CapacityId.getText());
+
+        if(sCapacityId){
+            Toast.makeText(getApplicationContext(), "Please enter the amount of Media Storage required", Toast.LENGTH_LONG).show();
+            return;
+        } // Error checking for Working Capacity entered
+        
         Integer Volume = Integer.parseInt(CapacityId.getText().toString());
         Integer InternalSize;  // Numerical value for workstation size
         Integer InterlockSize;  // Numerical value for interlock size
@@ -55,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         if(CapType.equals("Flask")){InternalSize = FlaskWorkstationSize(Volume);}
         else if(CapType.equals("Well")){InternalSize = WellWorkstationSize(Volume);}
         else {InternalSize = DishWorkstationSize(Volume);}
-        InterlockSize = InterlockSizeSub(view);
+        InterlockSize = InterlockSizeSub();
         WorkstationSize = CalculateWorkstationSize(InternalSize, InterlockSize);
 
         CheckBox Anaerobic = (CheckBox) findViewById(Check_Anaerobic);
@@ -64,6 +73,11 @@ public class MainActivity extends AppCompatActivity {
         boolean isHypoxic = Hypoxic.isChecked();
         CheckBox Hyperoxic = (CheckBox) findViewById(Check_Hyperoxic);
         boolean isHyperoxic = Hyperoxic.isChecked();
+
+        if(!isAnaerobic && !isHypoxic && !isHyperoxic){
+            Toast.makeText(getApplicationContext(), "Please enter the type(s) of operating environment required", Toast.LENGTH_LONG).show();
+            return;
+        } // Error checking for Operation Conditions selected
 
         if(isAnaerobic && !isHypoxic) {
             if (WorkstationSize.equals("BB")) {WorkstationChoice = "BugBox";}
@@ -159,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
         return WorkstationSize;
     } // Calculates the Workstation size based on Internal and Interlock Volumes
 
-    private Integer InterlockSizeSub (View view){
+    private Integer InterlockSizeSub (){
         Integer IntSize;
         RadioButton Button1 = (RadioButton) findViewById(IntSize1);
         RadioButton Button2 = (RadioButton) findViewById(IntSize2);
@@ -185,9 +199,8 @@ public class MainActivity extends AppCompatActivity {
         Integer Volume3 = 292; // N500 & Sgl SCI
         Integer Volume4 = 310; // N500 Dual SCI
         // Integer Volume5 = 565;  --> Size of SCi-tive Dual
-        Integer workstationSize;
 
-        return workstationSize = WorkstationVolumeCalc(MainVolume, Volume1, Volume2, Volume3, Volume4);
+        return WorkstationVolumeCalc(MainVolume, Volume1, Volume2, Volume3, Volume4);
     } // Specifies the Internal Volumes available for Workstations for T75 Flasks
 
     private Integer WellWorkstationSize(Integer MainVolume){
@@ -196,9 +209,8 @@ public class MainActivity extends AppCompatActivity {
         Integer Volume3 = 753;
         Integer Volume4 = 798;
         // Integer Volume5 = 1507;  --> Size of SCi-tive Dual
-        Integer workstationSize;
 
-        return workstationSize = WorkstationVolumeCalc(MainVolume, Volume1, Volume2, Volume3, Volume4);
+        return WorkstationVolumeCalc(MainVolume, Volume1, Volume2, Volume3, Volume4);
     } // Specifies the Internal Volumes available for Workstations for 96 Well Plates
 
     private Integer DishWorkstationSize(Integer MainVolume){
@@ -207,9 +219,8 @@ public class MainActivity extends AppCompatActivity {
         Integer Volume3 = 680;
         Integer Volume4 = 720;
         // Integer Volume5 = 1360;  --> Size of SCi-tive Dual
-        Integer workstationSize;
 
-        return workstationSize = WorkstationVolumeCalc(MainVolume, Volume1, Volume2, Volume3, Volume4);
+        return WorkstationVolumeCalc(MainVolume, Volume1, Volume2, Volume3, Volume4);
     } // Specifies the Internal Volumes available for Workstations for 90mm Petri-Dishes
 
     private Integer WorkstationVolumeCalc(Integer Volume, Integer Size1, Integer Size2, Integer Size3, Integer Size4){
