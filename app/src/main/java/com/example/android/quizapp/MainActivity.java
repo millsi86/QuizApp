@@ -1,14 +1,19 @@
 package com.example.android.quizapp;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import static com.example.android.quizapp.R.id.Check_Anaerobic;
+import static com.example.android.quizapp.R.id.Check_Hyperoxic;
+import static com.example.android.quizapp.R.id.Check_Hypoxic;
 import static com.example.android.quizapp.R.id.IntSize1;
 import static com.example.android.quizapp.R.id.IntSize2;
 import static com.example.android.quizapp.R.id.IntSize3;
@@ -26,9 +31,6 @@ public class MainActivity extends AppCompatActivity {
     private RadioGroup Group1;
     private RadioGroup Group2;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,12 +40,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void submit (View view){
-        String CapType = getRadio1ID(view);
+        String CapType = getRadio1ID();
         EditText CapacityId = (EditText) findViewById(WorkingCapacity);
         Integer Volume = Integer.parseInt(CapacityId.getText().toString());
         Integer InternalSize;  // Numerical value for workstation size
         Integer InterlockSize;  // Numerical value for interlock size
         String WorkstationSize;
+        String EmailMessage;
+        String WorkstationChoice = "";
+        boolean HasAnoxicOption = false;
+        boolean HasHyperoxicOption = false;
+        boolean HyperError = false;
 
         if(CapType.equals("Flask")){InternalSize = FlaskWorkstationSize(Volume);}
         else if(CapType.equals("Well")){InternalSize = WellWorkstationSize(Volume);}
@@ -51,11 +58,75 @@ public class MainActivity extends AppCompatActivity {
         InterlockSize = InterlockSizeSub(view);
         WorkstationSize = CalculateWorkstationSize(InternalSize, InterlockSize);
 
+        CheckBox Anaerobic = (CheckBox) findViewById(Check_Anaerobic);
+        boolean isAnaerobic = Anaerobic.isChecked();
+        CheckBox Hypoxic = (CheckBox) findViewById(Check_Hypoxic);
+        boolean isHypoxic = Hypoxic.isChecked();
+        CheckBox Hyperoxic = (CheckBox) findViewById(Check_Hyperoxic);
+        boolean isHyperoxic = Hyperoxic.isChecked();
 
+        if(isAnaerobic && !isHypoxic) {
+            if (WorkstationSize.equals("BB")) {WorkstationChoice = "BugBox";}
+            else if (WorkstationSize.equals("BB+")) {WorkstationChoice = "BugBox Plus";}
+            else if (WorkstationSize.equals("N400")) {WorkstationChoice = "Concept 400";}
+            else if (WorkstationSize.equals("N500")) {WorkstationChoice = "Concept 500";}
+            else if (WorkstationSize.equals("N1000")) {WorkstationChoice = "Concept 1000";}
+            else if (WorkstationSize.equals("SCI Sgl")) {WorkstationChoice = "SCI-tive";}
+            else {WorkstationChoice = "SCI-tive Dual";}
+        }
 
+        if(!isAnaerobic && isHypoxic){
+            if (WorkstationSize.equals("BB")) {WorkstationChoice = "BugBox-M";}
+            else if (WorkstationSize.equals("BB+")) {WorkstationChoice = "Invivo 300";}
+            else if (WorkstationSize.equals("N400")) {WorkstationChoice = "Invivo 400";}
+            else if (WorkstationSize.equals("N500")) {WorkstationChoice = "Invivo 500";}
+            else if (WorkstationSize.equals("N1000")) {WorkstationChoice = "Invivo 1000";}
+            else if (WorkstationSize.equals("SCI Sgl")) {WorkstationChoice = "SCI-tive";}
+            else {WorkstationChoice = "SCI-tive Dual";}
+        }
 
+        if(isAnaerobic && isHypoxic){
+            if (WorkstationSize.equals("BB")) {WorkstationChoice = "BugBox-M"; HasAnoxicOption = true;}
+            else if (WorkstationSize.equals("BB+")) {WorkstationChoice = "BugBox-M Plus"; HasAnoxicOption = true;}
+            else if (WorkstationSize.equals("N400")) {WorkstationChoice = "Concept-M 400";}
+            else if (WorkstationSize.equals("N500")) {WorkstationChoice = "Concept-M 500";}
+            else if (WorkstationSize.equals("N1000")) {WorkstationChoice = "Concept-M 1000";}
+            else if (WorkstationSize.equals("SCI Sgl")) {WorkstationChoice = "SCI-tive"; HasAnoxicOption = true;}
+            else {WorkstationChoice = "SCI-tive Dual"; HasAnoxicOption = true;}
+        }
 
-    }
+        if(isHyperoxic){
+            if(WorkstationSize.equals("N400")){HasHyperoxicOption = true; HyperError = false;}
+            else if(WorkstationSize.equals("N500")){HasHyperoxicOption = true; HyperError = false;}
+            else if(WorkstationSize.equals("N1000")){HasHyperoxicOption = true; HyperError = false;}
+            else{HyperError = true;}
+        }
+
+        EmailMessage = "Enquiry for a " + WorkstationChoice + " Workstation";
+        EmailMessage += "\nOptions Required are:";
+        if(HasAnoxicOption){EmailMessage += "\nAnoxic Operating Mode";}
+        if(HasHyperoxicOption){EmailMessage += "\nHyperoxic Operating Mode";}
+        if(HyperError){EmailMessage += "\nHyperoxic Mode requested but not available";}
+        if(!HasAnoxicOption && !isHyperoxic && !HyperError){EmailMessage += "\nNone";}
+        sendEmail(EmailMessage, WorkstationChoice);
+
+    } // Main working code
+
+    private void sendEmail(String message, String workstationChoice){
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setType("text/plain");
+        intent.setData(Uri.parse("mailto:"));
+        String Title = workstationChoice + " Enquiry";
+        String[] SalesEmail = {"Sales@Ruskinn.com"};
+        intent.putExtra(Intent.EXTRA_SUBJECT, Title);
+        intent.putExtra(Intent.EXTRA_TEXT, message);
+        intent.putExtra(Intent.EXTRA_EMAIL,SalesEmail);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+
+        startActivity(Intent.createChooser(intent, "Send Email")); // lets the user choose which e-mail app to use to send the order
+    } // Sub for creating e-mail
 
     private String CalculateWorkstationSize (Integer InternalSize, Integer InterlockSize){
         String WorkstationSize;
@@ -83,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else{WorkstationSize = "SCI Dual";}
 
-        Toast.makeText(this, WorkstationSize, Toast.LENGTH_SHORT).show();
+        // Toast.makeText(this, WorkstationSize, Toast.LENGTH_SHORT).show();
 
         return WorkstationSize;
     } // Calculates the Workstation size based on Internal and Interlock Volumes
@@ -109,10 +180,10 @@ public class MainActivity extends AppCompatActivity {
     } // Gets Interlock Size from RadioGroup2
 
     private Integer FlaskWorkstationSize(Integer MainVolume){
-        Integer Volume1 = 77;
-        Integer Volume2 = 115;
-        Integer Volume3 = 292;
-        Integer Volume4 = 310;
+        Integer Volume1 = 77; // BB & BB+
+        Integer Volume2 = 115; // N400
+        Integer Volume3 = 292; // N500 & Sgl SCI
+        Integer Volume4 = 310; // N500 Dual SCI
         // Integer Volume5 = 565;  --> Size of SCi-tive Dual
         Integer workstationSize;
 
@@ -152,7 +223,7 @@ public class MainActivity extends AppCompatActivity {
         return workstationSize;
     } // Calculates the required workstation volume size for all Media types. Returns an Integer relating to the size
 
-    private String getRadio1ID (View view){
+    private String getRadio1ID (){
         String CapacityType;
         RadioButton Flask, Well; // ,Plate
         Flask = (RadioButton) findViewById(Radio_T75);
