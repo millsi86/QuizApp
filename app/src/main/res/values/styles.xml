@@ -7,5 +7,89 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="DummyTextView">
+        <item name ="android:layout_width">0dp</item>
+        <item name ="android:layout_height">0dp</item>
+        <item name ="android:ems">10</item>
+        <item name ="android:focusable">true</item>
+        <item name ="android:focusableInTouchMode">true</item>
+        <item name ="android:hint">@string/dummy</item>
+    </style>
+
+    <style name="HorizontalLine">
+        <item name ="android:layout_width">match_parent</item>
+        <item name ="android:layout_height">1dp</item>
+        <item name ="android:layout_marginTop">@dimen/activity_vertical_margin</item>
+        <item name ="android:background">@color/colorAccentLight</item>
+    </style>
+
+    <style name="GravityCentre">
+        <item name ="android:layout_weight">1</item>
+        <item name ="android:layout_gravity">center</item>
+    </style>
+
+    <style name="FirstQuestionStyle">
+        <item name ="android:layout_width">match_parent</item>
+        <item name ="android:layout_height">wrap_content</item>
+        <item name ="android:paddingLeft">@dimen/Question_vertical_margin</item>
+        <item name ="android:paddingRight">@dimen/Question_vertical_margin</item>
+    </style>
+
+    <style name="QuestionStyle">
+        <item name ="android:layout_width">match_parent</item>
+        <item name ="android:layout_height">wrap_content</item>
+        <item name ="android:paddingLeft">@dimen/Question_vertical_margin</item>
+        <item name ="android:paddingRight">@dimen/Question_vertical_margin</item>
+        <item name ="android:layout_marginBottom">@dimen/Question_vertical_margin</item>
+        <item name ="android:layout_marginTop">@dimen/activity_vertical_margin</item>
+    </style>
+
+    <style name="AnswerStyle">
+        <item name ="android:layout_width">match_parent</item>
+        <item name ="android:layout_height">wrap_content</item>
+        <item name ="android:layout_marginLeft">@dimen/Question_vertical_margin</item>
+        <item name ="android:layout_marginRight">@dimen/Question_vertical_margin</item>
+    </style>
+
+    <style name="MatchWrap">
+        <item name ="android:layout_width">match_parent</item>
+        <item name ="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="RadioEdge">
+    <item name ="android:layout_width">wrap_content</item>
+    <item name ="android:layout_height">wrap_content</item>
+    <item name="android:layout_weight">.8</item>
+    </style>
+
+    <style name="RadioMiddle">
+        <item name ="android:layout_width">wrap_content</item>
+        <item name ="android:layout_height">wrap_content</item>
+        <item name ="android:layout_weight">1</item>
+    </style>
+
+    <style name="MediaStyle">
+        <item name ="android:layout_width">72sp</item>
+        <item name ="android:layout_height">72sp</item>
+        <item name ="android:layout_gravity">center</item>
+        <item name ="android:layout_weight">1</item>
+        <item name ="android:clickable">true</item>
+        <item name ="android:scaleType">fitCenter</item>
+    </style>
+
+    <style name="Radio2">
+        <item name ="android:layout_width">wrap_content</item>
+        <item name ="android:layout_height">match_parent</item>
+        <item name ="android:layout_weight">1</item>
+        <item name="android:textSize">@dimen/AnswerTextSie</item>
+    </style>
+
+    <style name="CheckBox">
+        <item name ="android:layout_width">wrap_content</item>
+        <item name ="android:layout_height">wrap_content</item>
+        <item name ="android:layout_weight">1</item>
+        <item name ="android:textSize">@dimen/AnswerTextSie</item>
+    </style>
 
 </resources>
+

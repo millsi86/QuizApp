@@ -8,4 +8,7 @@
     <dimen name="AnswerTextSie">16sp</dimen>
     <dimen name="HeaderMargin">8dp</dimen>
     <dimen name="ImageMargin">4dp</dimen>
+    <dimen name="WeightWidth">0dp</dimen>
+    <dimen name="LogoHeight">36dp</dimen>
+    <dimen name="MediaImageSize">72dp</dimen>
 </resources>
