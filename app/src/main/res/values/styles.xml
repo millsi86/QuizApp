@@ -8,8 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
     <style name="DummyTextView">
-        <item name ="android:layout_width">0dp</item>
-        <item name ="android:layout_height">0dp</item>
+        <item name ="android:layout_width">@dimen/Dummy</item>
+        <item name ="android:layout_height">@dimen/Dummy</item>
         <item name ="android:ems">10</item>
         <item name ="android:focusable">true</item>
         <item name ="android:focusableInTouchMode">true</item>
@@ -18,7 +18,7 @@
 
     <style name="HorizontalLine">
         <item name ="android:layout_width">match_parent</item>
-        <item name ="android:layout_height">1dp</item>
+        <item name ="android:layout_height">@dimen/LineHeight</item>
         <item name ="android:layout_marginTop">@dimen/activity_vertical_margin</item>
         <item name ="android:background">@color/colorAccentLight</item>
     </style>
@@ -26,6 +26,7 @@
     <style name="GravityCentre">
         <item name ="android:layout_weight">1</item>
         <item name ="android:layout_gravity">center</item>
+        <item name ="android:gravity">center</item>
     </style>
 
     <style name="FirstQuestionStyle">
@@ -69,8 +70,8 @@
     </style>
 
     <style name="MediaStyle">
-        <item name ="android:layout_width">72sp</item>
-        <item name ="android:layout_height">72sp</item>
+        <item name ="android:layout_width">@dimen/MediaImageSize</item>
+        <item name ="android:layout_height">@dimen/MediaImageSize</item>
         <item name ="android:layout_gravity">center</item>
         <item name ="android:layout_weight">1</item>
         <item name ="android:clickable">true</item>

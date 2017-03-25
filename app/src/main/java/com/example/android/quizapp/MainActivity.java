@@ -41,16 +41,16 @@ public class MainActivity extends AppCompatActivity {
         Group2 = (RadioGroup) findViewById(radioGroup2);
     }
 
-    public void submit (View view){
+    public void submit(View view) {
         String CapType = getRadio1ID();
         EditText CapacityId = (EditText) findViewById(WorkingCapacity);
         boolean sCapacityId = TextUtils.isEmpty(CapacityId.getText());
 
-        if(sCapacityId){
-            Toast.makeText(getApplicationContext(), "Please enter the amount of Media Storage required", Toast.LENGTH_LONG).show();
+        if (sCapacityId) {
+            Toast.makeText(getApplicationContext(), R.string.MainSizeError, Toast.LENGTH_LONG).show();
             return;
         } // Error checking for Working Capacity entered
-        
+
         Integer Volume = Integer.parseInt(CapacityId.getText().toString());
         Integer InternalSize;  // Numerical value for workstation size
         Integer InterlockSize;  // Numerical value for interlock size
@@ -61,9 +61,13 @@ public class MainActivity extends AppCompatActivity {
         boolean HasHyperoxicOption = false;
         boolean HyperError = false;
 
-        if(CapType.equals("Flask")){InternalSize = FlaskWorkstationSize(Volume);}
-        else if(CapType.equals("Well")){InternalSize = WellWorkstationSize(Volume);}
-        else {InternalSize = DishWorkstationSize(Volume);}
+        if (CapType.equals(getString(R.string.Flask))) {
+            InternalSize = FlaskWorkstationSize(Volume);
+        } else if (CapType.equals(getString(R.string.Well))) {
+            InternalSize = WellWorkstationSize(Volume);
+        } else {
+            InternalSize = DishWorkstationSize(Volume);
+        }
         InterlockSize = InterlockSizeSub();
         WorkstationSize = CalculateWorkstationSize(InternalSize, InterlockSize);
 
@@ -74,67 +78,111 @@ public class MainActivity extends AppCompatActivity {
         CheckBox Hyperoxic = (CheckBox) findViewById(Check_Hyperoxic);
         boolean isHyperoxic = Hyperoxic.isChecked();
 
-        if(!isAnaerobic && !isHypoxic && !isHyperoxic){
-            Toast.makeText(getApplicationContext(), "Please enter the type(s) of operating environment required", Toast.LENGTH_LONG).show();
+        if (!isAnaerobic && !isHypoxic && !isHyperoxic) {
+            Toast.makeText(getApplicationContext(), R.string.OperationEnvError, Toast.LENGTH_LONG).show();
             return;
         } // Error checking for Operation Conditions selected
 
-        if(isAnaerobic && !isHypoxic) {
-            if (WorkstationSize.equals("BB")) {WorkstationChoice = "BugBox";}
-            else if (WorkstationSize.equals("BB+")) {WorkstationChoice = "BugBox Plus";}
-            else if (WorkstationSize.equals("N400")) {WorkstationChoice = "Concept 400";}
-            else if (WorkstationSize.equals("N500")) {WorkstationChoice = "Concept 500";}
-            else if (WorkstationSize.equals("N1000")) {WorkstationChoice = "Concept 1000";}
-            else if (WorkstationSize.equals("SCI Sgl")) {WorkstationChoice = "SCI-tive";}
-            else {WorkstationChoice = "SCI-tive Dual";}
+        if (isAnaerobic && !isHypoxic) {
+            if (WorkstationSize.equals(getString(R.string.BB))) {
+                WorkstationChoice = getString(R.string.BugBox);
+            } else if (WorkstationSize.equals(getString(R.string.BBplus))) {
+                WorkstationChoice = getString(R.string.BugBoxPlus);
+            } else if (WorkstationSize.equals(getString(R.string.N400))) {
+                WorkstationChoice = getString(R.string.C400);
+            } else if (WorkstationSize.equals(getString(R.string.N500))) {
+                WorkstationChoice = getString(R.string.C500);
+            } else if (WorkstationSize.equals(getString(R.string.N1000))) {
+                WorkstationChoice = getString(R.string.C1000);
+            } else if (WorkstationSize.equals(getString(R.string.SciSgl))) {
+                WorkstationChoice = getString(R.string.Sci);
+            } else {
+                WorkstationChoice = getString(R.string.SciDual);
+            }
         }
 
-        if(!isAnaerobic && isHypoxic){
-            if (WorkstationSize.equals("BB")) {WorkstationChoice = "BugBox-M";}
-            else if (WorkstationSize.equals("BB+")) {WorkstationChoice = "Invivo 300";}
-            else if (WorkstationSize.equals("N400")) {WorkstationChoice = "Invivo 400";}
-            else if (WorkstationSize.equals("N500")) {WorkstationChoice = "Invivo 500";}
-            else if (WorkstationSize.equals("N1000")) {WorkstationChoice = "Invivo 1000";}
-            else if (WorkstationSize.equals("SCI Sgl")) {WorkstationChoice = "SCI-tive";}
-            else {WorkstationChoice = "SCI-tive Dual";}
+        if (!isAnaerobic && isHypoxic) {
+            if (WorkstationSize.equals(getString(R.string.BB))) {
+                WorkstationChoice = getString(R.string.BBM);
+            } else if (WorkstationSize.equals(getString(R.string.BBplus))) {
+                WorkstationChoice = getString(R.string.I300);
+            } else if (WorkstationSize.equals(getString(R.string.N400))) {
+                WorkstationChoice = getString(R.string.I400);
+            } else if (WorkstationSize.equals(getString(R.string.N500))) {
+                WorkstationChoice = getString(R.string.I500);
+            } else if (WorkstationSize.equals(getString(R.string.N1000))) {
+                WorkstationChoice = getString(R.string.I1000);
+            } else if (WorkstationSize.equals(getString(R.string.SciSgl))) {
+                WorkstationChoice = getString(R.string.Sci);
+            } else {
+                WorkstationChoice = getString(R.string.SciDual);
+            }
         }
 
-        if(isAnaerobic && isHypoxic){
-            if (WorkstationSize.equals("BB")) {WorkstationChoice = "BugBox-M"; HasAnoxicOption = true;}
-            else if (WorkstationSize.equals("BB+")) {WorkstationChoice = "BugBox-M Plus"; HasAnoxicOption = true;}
-            else if (WorkstationSize.equals("N400")) {WorkstationChoice = "Concept-M 400";}
-            else if (WorkstationSize.equals("N500")) {WorkstationChoice = "Concept-M 500";}
-            else if (WorkstationSize.equals("N1000")) {WorkstationChoice = "Concept-M 1000";}
-            else if (WorkstationSize.equals("SCI Sgl")) {WorkstationChoice = "SCI-tive"; HasAnoxicOption = true;}
-            else {WorkstationChoice = "SCI-tive Dual"; HasAnoxicOption = true;}
+        if (isAnaerobic && isHypoxic) {
+            if (WorkstationSize.equals(getString(R.string.BB))) {
+                WorkstationChoice = getString(R.string.BBM);
+                HasAnoxicOption = true;
+            } else if (WorkstationSize.equals(getString(R.string.BBplus))) {
+                WorkstationChoice = getString(R.string.I300);
+                HasAnoxicOption = true;
+            } else if (WorkstationSize.equals(getString(R.string.N400))) {
+                WorkstationChoice = getString(R.string.C400M);
+            } else if (WorkstationSize.equals(getString(R.string.N500))) {
+                WorkstationChoice = getString(R.string.C500M);
+            } else if (WorkstationSize.equals(getString(R.string.N1000))) {
+                WorkstationChoice = getString(R.string.C1000M);
+            } else if (WorkstationSize.equals(getString(R.string.SciSgl))) {
+                WorkstationChoice = getString(R.string.Sci);
+                HasAnoxicOption = true;
+            } else {
+                WorkstationChoice = getString(R.string.SciDual);
+                HasAnoxicOption = true;
+            }
         }
 
-        if(isHyperoxic){
-            if(WorkstationSize.equals("N400")){HasHyperoxicOption = true; HyperError = false;}
-            else if(WorkstationSize.equals("N500")){HasHyperoxicOption = true; HyperError = false;}
-            else if(WorkstationSize.equals("N1000")){HasHyperoxicOption = true; HyperError = false;}
-            else{HyperError = true;}
+        if (isHyperoxic) {
+            if (WorkstationSize.equals(getString(R.string.BBplus))) {
+                HasHyperoxicOption = true;
+                HyperError = false;
+            } else if (WorkstationSize.equals(getString(R.string.N500))) {
+                HasHyperoxicOption = true;
+                HyperError = false;
+            } else if (WorkstationSize.equals(getString(R.string.N1000))) {
+                HasHyperoxicOption = true;
+                HyperError = false;
+            } else {
+                HyperError = true;
+            }
         }
 
-        EmailMessage = "Enquiry for a " + WorkstationChoice + " Workstation";
-        EmailMessage += "\nOptions Required are:";
-        if(HasAnoxicOption){EmailMessage += "\nAnoxic Operating Mode";}
-        if(HasHyperoxicOption){EmailMessage += "\nHyperoxic Operating Mode";}
-        if(HyperError){EmailMessage += "\nHyperoxic Mode requested but not available";}
-        if(!HasAnoxicOption && !isHyperoxic && !HyperError){EmailMessage += "\nNone";}
+        EmailMessage = getString(R.string.EmailLine1Start) + WorkstationChoice + getString(R.string.EmailLine1End);
+        EmailMessage += getString(R.string.EmailLine2);
+        if (HasAnoxicOption) {
+            EmailMessage += getString(R.string.EmailAnoxic);
+        }
+        if (HasHyperoxicOption) {
+            EmailMessage += getString(R.string.EmailHyperoxic);
+        }
+        if (HyperError) {
+            EmailMessage += getString(R.string.EmailHyperoxicError);
+        }
+        if (!HasAnoxicOption && !isHyperoxic && !HyperError) {
+            EmailMessage += getString(R.string.EmailNoOptions);
+        }
         sendEmail(EmailMessage, WorkstationChoice);
 
     } // Main working code
 
-    private void sendEmail(String message, String workstationChoice){
+    private void sendEmail(String message, String workstationChoice) {
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setType("text/plain");
         intent.setData(Uri.parse("mailto:"));
-        String Title = workstationChoice + " Enquiry";
-        String[] SalesEmail = {"Sales@Ruskinn.com"};
+        String Title = workstationChoice + getString(R.string.EmailTitleEnd);
+        String[] SalesEmail = {getString(R.string.SalesEmailAddress)};
         intent.putExtra(Intent.EXTRA_SUBJECT, Title);
         intent.putExtra(Intent.EXTRA_TEXT, message);
-        intent.putExtra(Intent.EXTRA_EMAIL,SalesEmail);
+        intent.putExtra(Intent.EXTRA_EMAIL, SalesEmail);
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
@@ -142,38 +190,54 @@ public class MainActivity extends AppCompatActivity {
         startActivity(Intent.createChooser(intent, "Send Email")); // lets the user choose which e-mail app to use to send the order
     } // Sub for creating e-mail
 
-    private String CalculateWorkstationSize (Integer InternalSize, Integer InterlockSize){
+    private String CalculateWorkstationSize(Integer InternalSize, Integer InterlockSize) {
         String WorkstationSize;
-        if(InternalSize == 1){
-            if(InterlockSize == 1){WorkstationSize = "BB";}
-            else if(InterlockSize == 2){WorkstationSize = "BB+";}
-            else if(InterlockSize == 3){WorkstationSize = "N400";}
-            else if(InterlockSize == 4){WorkstationSize = "N500";}
-            else if(InterlockSize == 5){WorkstationSize = "N1000";}
-            else {WorkstationSize = "SCI Sgl";}
+        if (InternalSize == 1) {
+            if (InterlockSize == 1) {
+                WorkstationSize = (getString(R.string.BB));
+            } else if (InterlockSize == 2) {
+                WorkstationSize = (getString(R.string.BBplus));
+            } else if (InterlockSize == 3) {
+                WorkstationSize = (getString(R.string.N400));
+            } else if (InterlockSize == 4) {
+                WorkstationSize = (getString(R.string.N500));
+            } else if (InterlockSize == 5) {
+                WorkstationSize = (getString(R.string.N1000));
+            } else {
+                WorkstationSize = (getString(R.string.SciSgl));
+            }
+        } else if (InternalSize == 2) {
+            if (InterlockSize <= 3) {
+                WorkstationSize = (getString(R.string.N400));
+            } else if (InterlockSize == 4) {
+                WorkstationSize = (getString(R.string.N500));
+            } else if (InterlockSize == 5) {
+                WorkstationSize = (getString(R.string.N1000));
+            } else {
+                WorkstationSize = (getString(R.string.SciSgl));
+            }
+        } else if (InternalSize == 3) {
+            if (InterlockSize <= 5) {
+                WorkstationSize = (getString(R.string.N500));
+            } else {
+                WorkstationSize = (getString(R.string.SciSgl));
+            }
+        } else if (InternalSize == 4) {
+            if (InterlockSize <= 5) {
+                WorkstationSize = (getString(R.string.N500));
+            } else {
+                WorkstationSize = getString(R.string.SciDual);
+            }
+        } else {
+            WorkstationSize = getString(R.string.SciDual);
         }
-        else if(InternalSize == 2) {
-            if(InterlockSize <= 3) {WorkstationSize = "N400";}
-            else if(InterlockSize == 4) {WorkstationSize = "N500";}
-            else if(InterlockSize == 5) {WorkstationSize = "N1000";}
-            else {WorkstationSize = "SCI Sgl";}
-        }
-        else if(InternalSize == 3){
-            if(InterlockSize <= 5){WorkstationSize = "N500";}
-            else{WorkstationSize = "SCI Sgl";}
-        }
-        else if(InternalSize == 4) {
-            if (InterlockSize <= 5) {WorkstationSize = "N500";}
-            else{WorkstationSize = "SCI Dual";}
-        }
-        else{WorkstationSize = "SCI Dual";}
 
         // Toast.makeText(this, WorkstationSize, Toast.LENGTH_SHORT).show();
 
         return WorkstationSize;
     } // Calculates the Workstation size based on Internal and Interlock Volumes
 
-    private Integer InterlockSizeSub (){
+    private Integer InterlockSizeSub() {
         Integer IntSize;
         RadioButton Button1 = (RadioButton) findViewById(IntSize1);
         RadioButton Button2 = (RadioButton) findViewById(IntSize2);
@@ -183,17 +247,24 @@ public class MainActivity extends AppCompatActivity {
 
         int selectedId = Group2.getCheckedRadioButtonId();
 
-        if(selectedId == Button1.getId()){IntSize = 1;}
-        else if(selectedId == Button2.getId()){IntSize = 2;}
-        else if(selectedId == Button3.getId()){IntSize = 3;}
-        else if(selectedId == Button4.getId()){IntSize = 4;}
-        else if(selectedId == Button5.getId()){IntSize = 5;}
-        else {IntSize = 6;}
+        if (selectedId == Button1.getId()) {
+            IntSize = 1;
+        } else if (selectedId == Button2.getId()) {
+            IntSize = 2;
+        } else if (selectedId == Button3.getId()) {
+            IntSize = 3;
+        } else if (selectedId == Button4.getId()) {
+            IntSize = 4;
+        } else if (selectedId == Button5.getId()) {
+            IntSize = 5;
+        } else {
+            IntSize = 6;
+        }
 
         return IntSize;
     } // Gets Interlock Size from RadioGroup2
 
-    private Integer FlaskWorkstationSize(Integer MainVolume){
+    private Integer FlaskWorkstationSize(Integer MainVolume) {
         Integer Volume1 = 77; // BB & BB+
         Integer Volume2 = 115; // N400
         Integer Volume3 = 292; // N500 & Sgl SCI
@@ -203,7 +274,7 @@ public class MainActivity extends AppCompatActivity {
         return WorkstationVolumeCalc(MainVolume, Volume1, Volume2, Volume3, Volume4);
     } // Specifies the Internal Volumes available for Workstations for T75 Flasks
 
-    private Integer WellWorkstationSize(Integer MainVolume){
+    private Integer WellWorkstationSize(Integer MainVolume) {
         Integer Volume1 = 199;
         Integer Volume2 = 399;
         Integer Volume3 = 753;
@@ -213,7 +284,7 @@ public class MainActivity extends AppCompatActivity {
         return WorkstationVolumeCalc(MainVolume, Volume1, Volume2, Volume3, Volume4);
     } // Specifies the Internal Volumes available for Workstations for 96 Well Plates
 
-    private Integer DishWorkstationSize(Integer MainVolume){
+    private Integer DishWorkstationSize(Integer MainVolume) {
         Integer Volume1 = 180;
         Integer Volume2 = 360;
         Integer Volume3 = 680;
@@ -223,18 +294,24 @@ public class MainActivity extends AppCompatActivity {
         return WorkstationVolumeCalc(MainVolume, Volume1, Volume2, Volume3, Volume4);
     } // Specifies the Internal Volumes available for Workstations for 90mm Petri-Dishes
 
-    private Integer WorkstationVolumeCalc(Integer Volume, Integer Size1, Integer Size2, Integer Size3, Integer Size4){
+    private Integer WorkstationVolumeCalc(Integer Volume, Integer Size1, Integer Size2, Integer Size3, Integer Size4) {
         Integer workstationSize;
-        if(Volume <= Size1){ workstationSize = 1; }
-        else if(Volume <= Size2){ workstationSize = 2; }
-        else if(Volume <= Size3){ workstationSize = 3; }
-        else if(Volume <= Size4){ workstationSize = 4; }
-        else{workstationSize = 5;}
+        if (Volume <= Size1) {
+            workstationSize = 1;
+        } else if (Volume <= Size2) {
+            workstationSize = 2;
+        } else if (Volume <= Size3) {
+            workstationSize = 3;
+        } else if (Volume <= Size4) {
+            workstationSize = 4;
+        } else {
+            workstationSize = 5;
+        }
         // Toast.makeText(this, workstationSize.toString(), Toast.LENGTH_SHORT).show();
         return workstationSize;
     } // Calculates the required workstation volume size for all Media types. Returns an Integer relating to the size
 
-    private String getRadio1ID (){
+    private String getRadio1ID() {
         String CapacityType;
         RadioButton Flask, Well; // ,Plate
         Flask = (RadioButton) findViewById(Radio_T75);
@@ -243,9 +320,13 @@ public class MainActivity extends AppCompatActivity {
 
         int selectedId = Group1.getCheckedRadioButtonId();
 
-        if(selectedId == Flask.getId()){CapacityType = "Flask";}
-        else if(selectedId == Well.getId()){CapacityType = "Well";}
-        else {CapacityType = "Plate";}
+        if (selectedId == Flask.getId()) {
+            CapacityType = getString(R.string.Flask);
+        } else if (selectedId == Well.getId()) {
+            CapacityType = getString(R.string.Well);
+        } else {
+            CapacityType = getString(R.string.Plate);
+        }
 
         //Toast.makeText(this, CapacityType, Toast.LENGTH_SHORT).show();  /Line used for testing Group1 Radio Button section
 
@@ -311,137 +392,137 @@ public class MainActivity extends AppCompatActivity {
         PlateIntSci(view);
     }
 
-    public void T75CapacityText (View view){
+    public void T75CapacityText(View view) {
         TextView Text = (TextView) findViewById(WorkingCapacityText);
         Text.setText(R.string.CapacityTextFlasks);
     }
 
-    public void WellCapacityText (View view){
+    public void WellCapacityText(View view) {
         TextView Text = (TextView) findViewById(WorkingCapacityText);
         Text.setText(R.string.CapacityTextWells);
     }
 
-    public void PlateCapacityText (View view){
+    public void PlateCapacityText(View view) {
         TextView Text = (TextView) findViewById(WorkingCapacityText);
         Text.setText(R.string.CapacityTextPlates);
     }
 
-    public void T75CapacityHint (View view) {
+    public void T75CapacityHint(View view) {
         TextView Text = (TextView) findViewById(WorkingCapacity);
         Text.setHint(R.string.CapacityHintFlasks);
     }
 
-    public void WellCapacityHint (View view) {
+    public void WellCapacityHint(View view) {
         TextView Text = (TextView) findViewById(WorkingCapacity);
         Text.setHint(R.string.CapacityHintWells);
     }
 
-    public void PlateCapacityHint (View view) {
+    public void PlateCapacityHint(View view) {
         TextView Text = (TextView) findViewById(WorkingCapacity);
         Text.setHint(R.string.CapacityHintPlates);
     }
 
-    public void T75IntCapacityText (View view){
+    public void T75IntCapacityText(View view) {
         TextView Text = (TextView) findViewById(R.id.InterlockCapacityText);
         Text.setText(R.string.CapacityInterlockFlasks);
     }
 
-    public void WellIntCapacityText (View view){
+    public void WellIntCapacityText(View view) {
         TextView Text = (TextView) findViewById(R.id.InterlockCapacityText);
         Text.setText(R.string.CapacityInterlockWells);
     }
 
-    public void PlateIntCapacityText (View view){
+    public void PlateIntCapacityText(View view) {
         TextView Text = (TextView) findViewById(R.id.InterlockCapacityText);
         Text.setText(R.string.CapacityInterlockPlates);
     }
 
-    public void T75IntBB (View view){
+    public void T75IntBB(View view) {
         TextView Text = (TextView) findViewById(IntSize1);
         Text.setText(R.string.IntBBFlask);
     }
 
-    public void T75IntBBPlus (View view){
+    public void T75IntBBPlus(View view) {
         TextView Text = (TextView) findViewById(IntSize2);
         Text.setText(R.string.IntBBplusFlask);
     }
 
-    public void T75IntNuvoLrg (View view){
+    public void T75IntNuvoLrg(View view) {
         TextView Text = (TextView) findViewById(IntSize3);
         Text.setText(R.string.IntNuvoSmlFlask);
     }
 
-    public void T75IntNuvoSml (View view){
+    public void T75IntNuvoSml(View view) {
         TextView Text = (TextView) findViewById(IntSize4);
         Text.setText(R.string.IntNuvoLgeFlask);
     }
 
-    public void T75IntNuvoDual (View view){
+    public void T75IntNuvoDual(View view) {
         TextView Text = (TextView) findViewById(IntSize5);
         Text.setText(R.string.IntNuvoDualFlask);
     }
 
-    public void T75IntSci (View view){
+    public void T75IntSci(View view) {
         TextView Text = (TextView) findViewById(R.id.IntSize6);
         Text.setText(R.string.IntSciFlask);
     }
 
-    public void WellIntBB (View view){
+    public void WellIntBB(View view) {
         TextView Text = (TextView) findViewById(IntSize1);
         Text.setText(R.string.IntBBWell);
     }
 
-    public void WellIntBBPlus (View view){
+    public void WellIntBBPlus(View view) {
         TextView Text = (TextView) findViewById(IntSize2);
         Text.setText(R.string.IntBBplusWell);
     }
 
-    public void WellIntNuvoSml (View view){
+    public void WellIntNuvoSml(View view) {
         TextView Text = (TextView) findViewById(IntSize3);
         Text.setText(R.string.IntNuvoSmlWell);
     }
 
-    public void WellIntNuvoLge (View view){
+    public void WellIntNuvoLge(View view) {
         TextView Text = (TextView) findViewById(IntSize4);
         Text.setText(R.string.IntNuvoLgeWell);
     }
 
-    public void WellIntNuvoDual (View view){
+    public void WellIntNuvoDual(View view) {
         TextView Text = (TextView) findViewById(IntSize5);
         Text.setText(R.string.IntNuvoDualWell);
     }
 
-    public void WellIntSci (View view){
+    public void WellIntSci(View view) {
         TextView Text = (TextView) findViewById(R.id.IntSize6);
         Text.setText(R.string.IntSciWell);
     }
 
-    public void PlateIntBB (View view){
+    public void PlateIntBB(View view) {
         TextView Text = (TextView) findViewById(IntSize1);
         Text.setText(R.string.IntBBPlate);
     }
 
-    public void PlateIntBBPlus (View view){
+    public void PlateIntBBPlus(View view) {
         TextView Text = (TextView) findViewById(IntSize2);
         Text.setText(R.string.IntBBplusPlate);
     }
 
-    public void PlateIntNuvoSml (View view){
+    public void PlateIntNuvoSml(View view) {
         TextView Text = (TextView) findViewById(IntSize3);
         Text.setText(R.string.IntNuvoSmlPlate);
     }
 
-    public void PlateIntNuvoLge (View view){
+    public void PlateIntNuvoLge(View view) {
         TextView Text = (TextView) findViewById(IntSize4);
         Text.setText(R.string.IntNuvoLgePlate);
     }
 
-    public void PlateIntNuvoDual (View view){
+    public void PlateIntNuvoDual(View view) {
         TextView Text = (TextView) findViewById(IntSize5);
         Text.setText(R.string.IntNuvoDualPlate);
     }
 
-    public void PlateIntSci (View view){
+    public void PlateIntSci(View view) {
         TextView Text = (TextView) findViewById(R.id.IntSize6);
         Text.setText(R.string.IntSciPlate);
     }

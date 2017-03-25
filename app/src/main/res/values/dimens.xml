@@ -11,4 +11,6 @@
     <dimen name="WeightWidth">0dp</dimen>
     <dimen name="LogoHeight">36dp</dimen>
     <dimen name="MediaImageSize">72dp</dimen>
+    <dimen name="LineHeight">1dp</dimen>
+    <dimen name="Dummy">0dp</dimen>
 </resources>
