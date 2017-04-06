@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="Anaerobic">Anaérobie</string>
+    <string name="CapacityHintFlasks">1 à 560</string>
+    <string name="CapacityHintPlates">1 à 1150</string>
+    <string name="CapacityHintWells">1 à 1300</string>
+    <string name="CapacityInterlockFlasks">Sélectionnez le nombre de flacons dont vous avez besoin pour traverser le verrouillage en un seul aller:</string>
+    <string name="CapacityInterlockPlates">Sélectionnez le nombre de plaques de 90 mm que vous devez traverser le verrouillage en un seul aller:</string>
+    <string name="CapacityInterlockWells">Sélectionnez le nombre de plaques de puits que vous devez traverser l\'interverrouillage en un seul aller:</string>
+    <string name="CapacityTextFlasks">Entrez le nombre de flacons T75 que vous souhaitez stocker sur le poste de travail:</string>
+    <string name="CapacityTextPlates">Entrez le nombre de plaques de 90 mm que vous souhaitez stocker sur le poste de travail:</string>
+    <string name="CapacityTextWells">Entrez le nombre de plaques de puits que vous souhaitez stocker sur le poste de travail:</string>
+    <string name="Flask">Ballon</string>
+    <string name="Hyperoxic">Hyperoxique</string>
+    <string name="MainSizeError">Entrez le montant du stockage multimédia requis</string>
+    <string name="OperatingGas">Sélectionnez les conditions d\'utilisation requises:</string>
+    <string name="OperationEnvError">Entrez le (s) type (s) d\'environnement d\'exploitation requis</string>
+    <string name="Physiological">Physiologique</string>
+    <string name="Plate">assiette</string>
+    <string name="StorageType">Sélectionnez le type de stockage de média utilisé:</string>
+    <string name="Submit">Soumettre</string>
+    <string name="T75Flask">Flacon T75</string>
+    <string name="Title">Sélecteur de poste de travail</string>
+    <string name="Well">bien</string>
+    <string name="app_name">Sélecteur de poste de travail Ruskinn</string>
+    <string name="Well96">Plaque de 96 puits</string>
+    <string name="EmailTitleEnd">\" Enquête\"</string>
+    <string name="emailTitle">"Enquête sur un <xliff:g id="WorkstationChoice" example="Invivo 400">%s</xliff:g></string>
+    <string name="EmailLine1">Station de travail: <xliff:g id="WorkstationChoice" example="Invivo 400">%s</xliff:g></string>
+    <string name="EmailLine2">\nLes options requises sont:</string>
+    <string name="EmailNoOptions">Aucun</string>
+    <string name="EmailHyperoxicError">\nMode hyperxique demandé mais pas disponible</string>
+    <string name="EmailHyperoxic">\nMode de fonctionnement hyperoxique</string>
+    <string name="EmailAnoxic">\nMode de fonctionnement Anoxic</string>
+    <string name="Dish90mm">Plat Petri 90 mm</string>
+    <string name="Logo">Ruskinn Logo</string>
+    <string name="dummy" translatable="false">factice</string>
+</resources>

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Ruskinn Workstation Selector</string>
     <string name="dummy">dummy</string>
     <string name="Logo">Ruskinn Logo</string>
@@ -21,54 +21,54 @@
     <string name="Physiological">Physiological</string>
     <string name="Hyperoxic">Hyperoxic</string>
     <string name="Submit">Submit</string>
-    <string name="IntBBFlask">6</string>
-    <string name="IntBBplusFlask">11</string>
-    <string name="IntNuvoSmlFlask">21</string>
-    <string name="IntNuvoLgeFlask">28</string>
-    <string name="IntNuvoDualFlask">42</string>
-    <string name="IntSciFlask">50</string>
-    <string name="IntBBWell">14</string>
-    <string name="IntBBplusWell">26</string>
-    <string name="IntNuvoSmlWell">42</string>
-    <string name="IntNuvoLgeWell">70</string>
-    <string name="IntNuvoDualWell">98</string>
-    <string name="IntSciWell">116</string>
-    <string name="IntBBPlate">10</string>
-    <string name="IntBBplusPlate">18</string>
-    <string name="IntNuvoSmlPlate">30</string>
-    <string name="IntNuvoLgePlate">36</string>
-    <string name="IntNuvoDualPlate">72</string>
-    <string name="IntSciPlate">78</string>
-    <string name="BB">BB</string>
-    <string name="BugBox">BugBox</string>
-    <string name="BBplus">BB+</string>
-    <string name="BugBoxPlus">BugBox Plus</string>
-    <string name="N400">N400</string>
-    <string name="C400">Concept 400</string>
-    <string name="N500">N500</string>
-    <string name="C500">Concept 500</string>
-    <string name="N1000">N1000</string>
-    <string name="C1000">Concept 1000</string>
-    <string name="SciSgl">SCI Sgl</string>
-    <string name="Sci">SCI-tive</string>
-    <string name="SciDual">SCI-tive Dual</string>
-    <string name="BBM">BugBox-M</string>
-    <string name="I300">Invivo 300</string>
-    <string name="I400">Invivo 400</string>
-    <string name="I500">Invivo 500</string>
-    <string name="I1000">Invivo 1000</string>
-    <string name="C400M">Concept-M 400</string>
-    <string name="C500M">Concept-M 500</string>
-    <string name="C1000M">Concept-M 1000</string>
-    <string name="EmailLine1Start">Enquiry for a</string>
-    <string name="EmailLine1End">Workstation</string>
-    <string name="EmailLine2">Options Required are:</string>
-    <string name="EmailAnoxic">Anoxic Operating Mode</string>
-    <string name="EmailHyperoxic">Hyperoxic Operating Mode</string>
-    <string name="EmailHyperoxicError">Hyperoxic Mode requested but not available</string>
+    <string name="IntBBFlask" translatable="false">6</string>
+    <string name="IntBBplusFlask" translatable="false">11</string>
+    <string name="IntNuvoSmlFlask" translatable="false">21</string>
+    <string name="IntNuvoLgeFlask" translatable="false">28</string>
+    <string name="IntNuvoDualFlask" translatable="false">42</string>
+    <string name="IntSciFlask" translatable="false">50</string>
+    <string name="IntBBWell" translatable="false">14</string>
+    <string name="IntBBplusWell" translatable="false">26</string>
+    <string name="IntNuvoSmlWell" translatable="false">42</string>
+    <string name="IntNuvoLgeWell" translatable="false">70</string>
+    <string name="IntNuvoDualWell" translatable="false">98</string>
+    <string name="IntSciWell" translatable="false">116</string>
+    <string name="IntBBPlate" translatable="false">10</string>
+    <string name="IntBBplusPlate" translatable="false">18</string>
+    <string name="IntNuvoSmlPlate" translatable="false">30</string>
+    <string name="IntNuvoLgePlate" translatable="false">36</string>
+    <string name="IntNuvoDualPlate" translatable="false">72</string>
+    <string name="IntSciPlate" translatable="false">78</string>
+    <string name="BB" translatable="false">BB</string>
+    <string name="BugBox" translatable="false">BugBox</string>
+    <string name="BBplus" translatable="false">BB+</string>
+    <string name="BugBoxPlus" translatable="false">BugBox Plus</string>
+    <string name="N400" translatable="false">N400</string>
+    <string name="C400" translatable="false">Concept 400</string>
+    <string name="N500" translatable="false">N500</string>
+    <string name="C500" translatable="false">Concept 500</string>
+    <string name="N1000" translatable="false">N1000</string>
+    <string name="C1000" translatable="false">Concept 1000</string>
+    <string name="SciSgl" translatable="false">SCI Sgl</string>
+    <string name="Sci" translatable="false">SCI-tive</string>
+    <string name="SciDual" translatable="false">SCI-tive Dual</string>
+    <string name="BBM" translatable="false">BugBox-M</string>
+    <string name="I300" translatable="false">Invivo 300</string>
+    <string name="I400" translatable="false">Invivo 400</string>
+    <string name="I500" translatable="false">Invivo 500</string>
+    <string name="I1000" translatable="false">Invivo 1000</string>
+    <string name="C400M" translatable="false">Concept-M 400</string>
+    <string name="C500M" translatable="false">Concept-M 500</string>
+    <string name="C1000M" translatable="false">Concept-M 1000</string>
+    <string name="emailTitle">Enquiry for a <xliff:g id="WorkstationChoice" example="Invivo 400">%s</xliff:g> </string>
+    <string name="EmailLine1">Workstation: <xliff:g id="WorkstationChoice" example="Invivo 400">%s</xliff:g></string>
+    <string name="EmailLine2">\nOptions Required are:</string>
+    <string name="EmailAnoxic">\nAnoxic Operating Mode</string>
+    <string name="EmailHyperoxic">\nHyperoxic Operating Mode</string>
+    <string name="EmailHyperoxicError">\nHyperoxic Mode requested but not available</string>
     <string name="EmailNoOptions">None</string>
-    <string name="SalesEmailAddress">Sales@Ruskinn.com</string>
-    <string name="EmailTitleEnd">Enquiry</string>
+    <string name="SalesEmailAddress" translatable="false">Sales@Ruskinn.com</string>
+    <string name="EmailTitleEnd">\u0020Enquiry</string>
     <string name="Flask">Flask</string>
     <string name="Well">Well</string>
     <string name="Plate">Plate</string>

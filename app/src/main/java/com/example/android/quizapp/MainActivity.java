@@ -41,6 +41,18 @@ public class MainActivity extends AppCompatActivity {
         Group2 = (RadioGroup) findViewById(radioGroup2);
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedState) {
+        super.onRestoreInstanceState(savedState);
+    }
+
+
+
     public void submit(View view) {
         String CapType = getRadio1ID();
         EditText CapacityId = (EditText) findViewById(WorkingCapacity);
@@ -55,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         Integer InternalSize;  // Numerical value for workstation size
         Integer InterlockSize;  // Numerical value for interlock size
         String WorkstationSize;
+        String Email1stline;
         String EmailMessage;
         String WorkstationChoice = "";
         boolean HasAnoxicOption = false;
@@ -156,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        EmailMessage = getString(R.string.EmailLine1Start) + WorkstationChoice + getString(R.string.EmailLine1End);
+        EmailMessage = getString(R.string.EmailLine1, WorkstationChoice);
         EmailMessage += getString(R.string.EmailLine2);
         if (HasAnoxicOption) {
             EmailMessage += getString(R.string.EmailAnoxic);
@@ -178,9 +191,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setType("text/plain");
         intent.setData(Uri.parse("mailto:"));
-        String Title = workstationChoice + getString(R.string.EmailTitleEnd);
         String[] SalesEmail = {getString(R.string.SalesEmailAddress)};
-        intent.putExtra(Intent.EXTRA_SUBJECT, Title);
+        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.emailTitle,workstationChoice));
         intent.putExtra(Intent.EXTRA_TEXT, message);
         intent.putExtra(Intent.EXTRA_EMAIL, SalesEmail);
         if (intent.resolveActivity(getPackageManager()) != null) {
